@@ -11,6 +11,7 @@ import MovieCard from "@/components/MovieCard";
 const MoviePage = () => {
   const { resolvedTheme } = useTheme();
   const [movieData, setMovieData] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
   const searchTimeoutRef = useRef();
   const [isPending, startTranistion] = useTransition();
   const fetchMovies = async () => {
@@ -39,13 +40,18 @@ const MoviePage = () => {
     }
 
     searchTimeoutRef.current = setTimeout(async () => {
-      const resp = await getApiData(value);
-      if (resp.Response === "True") {
-        startTranistion(() => {
-          setMovieData(resp.Search);
-        });
-      } else {
-        setMovieData([]); // clear results if no match
+      setHasSearched(true);
+      try {
+        const resp = await getApiData(value);
+        if (resp.Response === "True") {
+          startTranistion(() => {
+            setMovieData(resp.Search);
+          });
+        } else {
+          setMovieData([]);
+        }
+      } catch (error) {
+        setMovieData([]);
       }
     }, 500);
   };
@@ -97,16 +103,22 @@ const MoviePage = () => {
         </form>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full lg:px-40 px-8">
-          {isPending
-            ? Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
-            : movieData.map((movie, index) => (
-                <MovieCard
-                  key={index}
-                  Title={movie.Title}
-                  Poster={movie.Poster}
-                  imdbID={movie.imdbID}
-                />
-              ))}
+          {isPending ? (
+            Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+          ) : movieData.length > 0 ? (
+            movieData.map((movie, index) => (
+              <MovieCard
+                key={index}
+                Title={movie.Title}
+                Poster={movie.Poster}
+                imdbID={movie.imdbID}
+              />
+            ))
+          ) : hasSearched ? (
+            <div className="col-span-full animate-bounce text-center text-red-500 font-semibold text-2xl g mt-5">
+              Movie not found 😢
+            </div>
+          ) : null}
         </ul>
       </main>
     </div>
