@@ -21,7 +21,7 @@ const Page = () => {
           setImgSrc("/fallback.jpg");
         }
       } else {
-        console.error("Movie not found:", resp?.Error || "Unknown error");
+        return err;
       }
     };
     fetchApi();

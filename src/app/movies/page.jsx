@@ -15,14 +15,14 @@ const MoviePage = () => {
   const [isPending, startTranistion] = useTransition();
   const fetchMovies = async () => {
     try {
-      const resp = await getApiData(); // fetch default
+      const resp = await getApiData();
       if (resp.Response === "True") {
         startTranistion(() => {
           setMovieData(resp.Search);
         });
       }
     } catch (error) {
-      console.log(error);
+      return;
     }
   };
 

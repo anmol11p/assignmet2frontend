@@ -11,8 +11,6 @@ const HomePage = () => {
     const current = localStorage.getItem("theme") || "dark";
     setTheme(current);
   }, []);
-  // console.log(process.env.OMDB_API);
-  console.log(process.env.NEXT_PUBLIC_OMDB_API);
 
   return (
     <section className="relative flex flex-col justify-center items-center min-h-[100vh] w-full overflow-hidden  antialiased px-4 sm:px-20 dark:bg-black dark:text-white bg-white text-black pb-20">
