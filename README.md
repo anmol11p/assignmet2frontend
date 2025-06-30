@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Next.js Movies App with OMDB API
 
-## Getting Started
+This is a sleek and responsive Movies Web App built with **Next.js 14 App Router**, allowing users to:
 
-First, run the development server:
+- 🔍 **Search** for movies by title using the OMDB API
+- 📄 **View detailed information** about any movie
+- 🖼️ Enjoy a smooth UI with dark/light mode, image fallbacks, skeleton loaders, and transitions
+
+---
+
+## 🚀 Tech Stack
+
+## 🚀 Tech Stack
+
+| Tech                         | Purpose                                                                  |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| **Next.js 15**               | React-based framework for App Router, SSR & SSG                          |
+| **React 19**                 | Modern UI library powering the component-based architecture              |
+| **Tailwind CSS v4**          | Utility-first CSS framework for rapid UI development                     |
+| **next-themes**              | Supports dark/light theme toggling                                       |
+| **tsparticles**              | Particle animation effects (used for visual effects on UI)               |
+| **tw-animate-css**           | Tailwind plugin for CSS animations like fadeIn, bounce, etc.             |
+| **motion**                   | Animation library for smooth UI transitions (e.g., page & element entry) |
+| **lucide-react**             | Beautiful open-source SVG icon library                                   |
+| **class-variance-authority** | Utility for managing Tailwind variants in components                     |
+| **tailwind-merge**           | Smart merging of Tailwind classes to prevent conflicts                   |
+| **clsx**                     | Utility for conditionally joining class names                            |
+| **react-hot-toast**          | Lightweight notifications with good accessibility                        |
+| **OMDB API**                 | External movie data source (search & details)                            |
+
+---
+
+## 🔧 Setup Instructions
+
+### 1. Clone the Repository
 
 ```bash
+git clone https://github.com/yourusername/movies-app.git
+cd movies-app
+npm install
+# or
+yarn install
+OMDB_API_KEY=your_omdb_api_key_here
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔍 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🌗 Dark/Light mode toggle (auto-detects theme)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔍 Movie search with debounced input
 
-## Learn More
+⏳ Loading skeletons for better UX
 
-To learn more about Next.js, take a look at the following resources:
+🖼️ Fallback image handling for missing posters
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🧭 Detailed Movie Page with runtime, plot, cast, and more
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⚡ Smooth transitions with useTransition from React
+API Used
+🎥 OMDB API
+API: https://www.omdbapi.com
 
-## Deploy on Vercel
+Key required: ✅ Yes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Sign up for a free key: https://www.omdbapi.com/apikey.aspx
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Usage Example:
+
+ts
+Copy
+Edit
+const res = await fetch(`https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=batman`);
+
+---

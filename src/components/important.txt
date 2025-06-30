@@ -1,0 +1,6 @@
+
+add skeleton loader
+
+add 404 as your choice
+
+impelement search icon
