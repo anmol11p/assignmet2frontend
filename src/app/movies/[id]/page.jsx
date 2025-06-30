@@ -13,15 +13,17 @@ const Page = () => {
   useEffect(() => {
     const fetchApi = async () => {
       const resp = await getMovieDetailsInside(id);
-      if (resp?.Response === "True") {
-        setMovie(resp);
-        if (resp?.Poster && resp.Poster !== "N/A") {
-          setImgSrc(resp.Poster);
-        } else {
-          setImgSrc("/fallback.jpg");
+      try {
+        if (resp?.Response === "True") {
+          setMovie(resp);
+          if (resp?.Poster && resp.Poster !== "N/A") {
+            setImgSrc(resp.Poster);
+          } else {
+            setImgSrc("/fallback.jpg");
+          }
         }
-      } else {
-        return err;
+      } catch (error) {
+        return error;
       }
     };
     fetchApi();
