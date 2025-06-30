@@ -18,10 +18,22 @@ const Page = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { title, genre, rating, review } = form;
+
+    if (!title || !genre || !rating || !review) {
+      toast.error("Please fill all fields", {
+        duration: 3000,
+        position: "bottom-center",
+        className: "text-white bg-red-300",
+      });
+      return;
+    }
+
     toast.success("Your review has been submitted", {
       duration: 3000,
       position: "bottom-center",
     });
+
     setForm({ title: "", genre: "", rating: "", review: "" });
   };
 

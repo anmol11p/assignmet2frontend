@@ -4,7 +4,6 @@ export const getMovieDetailsInside = async (id) => {
     const url = `https://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
