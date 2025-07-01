@@ -10,8 +10,6 @@ This is a sleek and responsive Movies Web App built with **Next.js 14 App Router
 
 ## 🚀 Tech Stack
 
-## 🚀 Tech Stack
-
 | Tech                         | Purpose                                                                  |
 | ---------------------------- | ------------------------------------------------------------------------ |
 | **Next.js 15**               | React-based framework for App Router, SSR & SSG                          |
